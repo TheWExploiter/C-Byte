@@ -18,19 +18,19 @@ function createPoint() {
   return {
     x: Math.random() * width,
     y: Math.random() * height,
-    vx: (Math.random() - 0.5) * 0.5,
-    vy: (Math.random() - 0.5) * 0.5,
+    vx: (Math.random() - 0.5) * 0.7,
+    vy: (Math.random() - 0.5) * 0.7,
     alpha: 1
   };
 }
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 120; i++) {
   points.push(createPoint());
 }
 
 function draw() {
   ctx.clearRect(0, 0, width, height);
-  
+
   for (let point of points) {
     point.x += point.vx;
     point.y += point.vy;
@@ -41,7 +41,7 @@ function draw() {
     }
 
     ctx.beginPath();
-    ctx.arc(point.x, point.y, 2, 0, Math.PI * 2);
+    ctx.arc(point.x, point.y, 2.2, 0, Math.PI * 2);
     ctx.fillStyle = `rgba(180, 120, 255, ${point.alpha})`;
     ctx.fill();
   }
@@ -57,6 +57,7 @@ function draw() {
         ctx.moveTo(points[i].x, points[i].y);
         ctx.lineTo(points[j].x, points[j].y);
         ctx.strokeStyle = `rgba(140, 80, 255, ${(1 - dist / 150) * 0.5})`;
+        ctx.lineWidth = 1;
         ctx.stroke();
       }
     }
